@@ -1,4 +1,4 @@
-import boto3 # type: ignore
+import boto3 #type:ignore
 
 dynamodb = boto3.resource(
         'dynamodb',
@@ -10,7 +10,6 @@ dynamodb = boto3.resource(
 
 table = dynamodb.Table('Product')
 
-response = table.scan()
-
+response = table.scan(Limit = 2)
 for item in response['Items']:
         print(item)
