@@ -7,8 +7,15 @@ dynamodb = boto3.resource(
         aws_access_key_id = 'fakeMyKeyId',
         aws_secret_access_key = 'fakeSecretAccessKey'
 )
+
 table = dynamodb.Table("Product")
 
-response = table.meta.client.describe_table(TableName="Product")
-
-print(response['Table'])
+response = table.get_item(
+        Key = {
+                'Product_id': 'p001',
+                'Category' :'Electronics'
+        }
+)
+# print(response['Item'])
+item = response.get('Item')
+print(item)

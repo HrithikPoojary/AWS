@@ -1,5 +1,5 @@
 import boto3 #type:ignore
-
+from boto3.dynamodb.conditions import Key,Attr #type:ignore
 dynamodb = boto3.resource(
         'dynamodb',
         endpoint_url = 'http://localhost:8000',
@@ -7,8 +7,12 @@ dynamodb = boto3.resource(
         aws_access_key_id = 'fakeMyKeyId',
         aws_secret_access_key = 'fakeSecretAccessKey'
 )
-table = dynamodb.Table("Product")
 
-response = table.meta.client.describe_table(TableName="Product")
+table = dynamodb.Table('Student')
 
-print(response['Table'])
+response = table.get_item(
+        Key = {
+                'Student_id':5
+        }
+)
+print(response['Item'])

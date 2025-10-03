@@ -14,14 +14,14 @@ with table.batch_writer() as batch:
         batch.put_item(
                 Item = {
                         'Product_id' : 'p004',
-                        'Category' : 'Electronics',
+                        'Category' : 'Bus',
                         'Name' : 'Vehicale'
                 }
         )
         batch.put_item(
                 Item = {
                         'Product_id' : 'p005',
-                        'Category' : 'Electronics',  
+                        'Category' : 'Plane',  
                         'Name':'Laptop'
                 }
         )
