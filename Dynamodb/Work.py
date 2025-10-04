@@ -19,4 +19,4 @@ for i in lists:
         empty.append(response)
 
 for i in range(0,len(empty)):
-        print(empty[i]['Items'][0]['Product_id'])
+        print(empty[i]['Items'])
