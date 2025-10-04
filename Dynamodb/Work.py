@@ -8,11 +8,15 @@ dynamodb = boto3.resource(
         aws_secret_access_key = 'fakeSecretAccessKey'
 )
 
-table = dynamodb.Table('Student')
 
-response = table.get_item(
-        Key = {
-                'Student_id':5
-        }
-)
-print(response['Item'])
+table = dynamodb.Table('Product')
+empty = []
+lists = ['p004','p001']
+for i in lists:
+        response = table.query(
+                KeyConditionExpression = Key('Product_id').eq(i)
+                                )
+        empty.append(response)
+
+for i in range(0,len(empty)):
+        print(empty[i]['Items'][0]['Product_id'])
