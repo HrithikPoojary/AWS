@@ -1,5 +1,6 @@
 import boto3 #type:ignore
-from boto3.dynamodb.conditions import Key,Attr #type:ignore
+from boto3.dynamodb.conditions import Attr,Key #type:ignore
+
 dynamodb = boto3.resource(
         'dynamodb',
         endpoint_url = 'http://localhost:8000',
@@ -8,7 +9,9 @@ dynamodb = boto3.resource(
         aws_secret_access_key = 'fakeSecretAccessKey'
 )
 product = dynamodb.Table('Product')
-response = product.query(
-        KeyConditionExpression  = Key('Product_id').eq('p004') & Key('Category').eq('Robo')
-)
+
+response = product.scan(Limit =3)
+
+# for i in response:
+#         print(i)
 print(response['Items'])
